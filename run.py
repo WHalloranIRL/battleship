@@ -39,7 +39,7 @@ def is_valid_guess(guess, size):
 def play_game(size, num_ships):
     print("Welcome to Battleship!")
     print("Try to sink the computer's ships.")
-    print("Enter row and column numbers to make a guess.")
+    print("Enter row and column numbers to make a guess.\n Rows and Columns start at 0 0")
 
     grid = create_grid(size)
     place_ships(grid, num_ships)
