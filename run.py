@@ -50,7 +50,7 @@ def play_game(size, num_ships):
     guessed_coordinates = set()  # Set to store guessed coordinates
 
     while True:
-        guess_str = input("Enter your guess (row column): ")
+        guess_str = input("Enter your guess (row column): \n")
         if guess_str.lower() == 'quit':
             print("Exiting the game...")
             return
@@ -84,10 +84,10 @@ def play_game(size, num_ships):
 # Main function
 def main():
     while True:
-        size = int(input("Enter the grid size: "))
-        num_ships = int(input("Enter the number of ships: "))
+        size = int(input("Enter the grid size: \n"))
+        num_ships = int(input("Enter the number of ships: \n"))
         play_game(size, num_ships)
-        play_again = input("Do you want to play again? (yes/no): ")
+        play_again = input("Do you want to play again? (yes/no): \n")
         if play_again.lower() != 'yes':
             print("Exiting the game...")
             break

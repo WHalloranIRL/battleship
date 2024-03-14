@@ -79,3 +79,14 @@ Exiting the game...
 - **WebDev**: Provided information and tutorials
 - **YouTube**: Various tutorials and guides utilized for learning and inspiration.
 - **Co-Pilot**: AI pair programmer developed by GitHub, provided code suggestions and enhancements.
+
+## Libraries or Packages Used
+
+- **Flake8**: Used for code linting and style checking to ensure adherence to PEP 8 guidelines.
+- **Python 3.x**: The programming language used to develop the application.
+
+### Imports
+
+```python
+import random
+```
