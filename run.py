@@ -39,7 +39,8 @@ def is_valid_guess(guess, size):
 def play_game(size, num_ships):
     print("Welcome to Battleship!")
     print("Try to sink the computer's ships.")
-    print("Enter row and column numbers to make a guess.\n Rows and Columns start at 0 0")
+    print("Enter row and column numbers to make a guess.")
+    print("Type 'quit' to exit the game.")
 
     grid = create_grid(size)
     place_ships(grid, num_ships)
@@ -47,6 +48,9 @@ def play_game(size, num_ships):
 
     while True:
         guess_str = input("Enter your guess (row column): ")
+        if guess_str.lower() == 'quit':
+            print("Exiting the game...")
+            return
         try:
             guess = tuple(map(int, guess_str.split()))
             if not is_valid_guess(guess, size):
@@ -68,6 +72,7 @@ def play_game(size, num_ships):
             print("You missed!")
             grid[x][y] = '-'
             print_grid(grid)
+
 
 
 def main():
