@@ -1,5 +1,7 @@
 # Battleship Game
 
+[![Validated by PEP 8](https://img.shields.io/badge/PEP%208-validated-brightgreen.svg)](https://flake8.pycqa.org/)
+
 This is a simple Battleship game implemented in Python, where the player tries to sink the computer's ships by guessing their locations on a grid.
 
 ## Instructions
@@ -68,3 +70,12 @@ Exiting the game...
 ## Known Bugs
 
 - Sometimes the program may display the message "Your guess is off-grid." even for valid guesses. This occurs due to a rounding error
+
+## Credits
+
+- **ChatGPT**: Provided assistance in generating and refining the code.
+- **Code Institute**: Contributed to the educational resources used for learning.
+- **Mate Racz**: Assisted in code debugging and optimization.
+- **WebDev**: Provided information and tutorials
+- **YouTube**: Various tutorials and guides utilized for learning and inspiration.
+- **Co-Pilot**: AI pair programmer developed by GitHub, provided code suggestions and enhancements.
