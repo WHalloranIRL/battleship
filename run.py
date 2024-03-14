@@ -70,11 +70,15 @@ def play_game(size, num_ships):
             print_grid(grid)
 
 
-# Main function
 def main():
-    size = int(input("Enter the grid size: "))
-    num_ships = int(input("Enter the number of ships: "))
-    play_game(size, num_ships)
+    while True:
+        size = int(input("Enter the grid size: "))
+        num_ships = int(input("Enter the number of ships: "))
+        play_game(size, num_ships)
+        play_again = input("Do you want to play again? (yes/no): ")
+        if play_again.lower() != 'yes':
+            print("Exiting the game...")
+            break
 
 if __name__ == "__main__":
     main()
