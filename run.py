@@ -69,3 +69,12 @@ def play_game(size, num_ships):
             grid[x][y] = '-'
             print_grid(grid)
 
+
+# Main function
+def main():
+    size = int(input("Enter the grid size: "))
+    num_ships = int(input("Enter the number of ships: "))
+    play_game(size, num_ships)
+
+if __name__ == "__main__":
+    main()
