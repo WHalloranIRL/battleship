@@ -1,26 +1,23 @@
-#importing the random number generator
 import random
 
-# Function to create a grid from user input
+# Function to create a grid of given size
 def create_grid(size):
     grid = []
     for _ in range(size):
-        row = ['O'] * size
+        row = [' '] * size  # Initialize with empty spaces
         grid.append(row)
     return grid
 
-
-# Function to print the grid
+# Function to print the grid with hits and misses
 def print_grid(grid):
     for row in grid:
-        row_str = ""
+        printable_row = []
         for cell in row:
-            if cell == 'H' or cell == 'M':
-                row_str += cell + " "
+            if cell == 'H' or cell == 'M':  # Show hits and misses
+                printable_row.append(cell)
             else:
-                row_str += "O "
-        print(row_str)
-
+                printable_row.append('-')  # Hide ships and unguessed spaces
+        print(" ".join(printable_row))
 
 # Function to randomly place ships on the grid
 def place_ships(grid, num_ships):
@@ -28,15 +25,13 @@ def place_ships(grid, num_ships):
     for _ in range(num_ships):
         x = random.randint(0, size - 1)
         y = random.randint(0, size - 1)
-
         # Ensure ships are not placed on top of each other
         while grid[x][y] == 'X':
             x = random.randint(0, size - 1)
             y = random.randint(0, size - 1)
         grid[x][y] = 'X'
 
-
-# Function to check if a guess is valid and inside the grid boundries
+# Function to check if a guess is valid (within grid boundaries)
 def is_valid_guess(guess, size):
     x, y = guess
     return 0 <= x < size and 0 <= y < size
@@ -69,18 +64,18 @@ def play_game(size, num_ships):
         x, y = guess
         if grid[x][y] == 'X':
             print("Congratulations! You sank a battleship!")
-            grid[x][y] = '!'
+            grid[x][y] = 'H'  # Mark hit
             print_grid(grid)
             if all('X' not in row for row in grid):
                 print("Congratulations! You won!")
                 break
         else:
             print("You missed!")
-            grid[x][y] = '-'
+            if grid[x][y] != 'M':  # Avoid marking multiple misses on the same spot
+                grid[x][y] = 'M'  # Mark miss
             print_grid(grid)
 
-
-
+# Main function
 def main():
     while True:
         size = int(input("Enter the grid size: "))
