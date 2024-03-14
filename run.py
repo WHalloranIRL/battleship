@@ -9,3 +9,7 @@ def create_grid(size):
         grid.append(row)
     return grid
 
+# Function to print the grid
+def print_grid(grid):
+    for row in grid:
+        print(" ".join(row))
