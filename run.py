@@ -10,21 +10,26 @@ def create_grid(size):
 
 # Function to print the grid with hits and misses
 def print_grid(grid):
-    print("   " + " ".join(str(i) for i in range(1, len(grid) + 1)))
     for i, row in enumerate(grid, start=1):
-        print("{:2d} {}".format(i, " ".join(cell for cell in row)))
+        printable_row = []
+        for j, cell in enumerate(row, start=1):
+            if cell == 'H' or cell == 'M':  # Show hits and misses
+                printable_row.append(cell)
+            else:
+                printable_row.append('-')  # Hide ships and unguessed spaces
+        print(f"{i} {' '.join(printable_row)}")
 
 # Function to randomly place ships on the grid
 def place_ships(grid, num_ships):
     size = len(grid)
     for _ in range(num_ships):
-        x = random.randint(1, size)
-        y = random.randint(1, size)
+        x = random.randint(0, size - 1)
+        y = random.randint(0, size - 1)
         # Ensure ships are not placed on top of each other
-        while grid[x - 1][y - 1] == 'X':
-            x = random.randint(1, size)
-            y = random.randint(1, size)
-        grid[x - 1][y - 1] = 'X'
+        while grid[x][y] == 'X':
+            x = random.randint(0, size - 1)
+            y = random.randint(0, size - 1)
+        grid[x][y] = 'X'
 
 # Function to check if a guess is valid (within grid boundaries)
 def is_valid_guess(guess, size):
@@ -42,6 +47,8 @@ def play_game(size, num_ships):
     place_ships(grid, num_ships)
     print_grid(grid)
 
+    guessed_coordinates = set()  # Set to store guessed coordinates
+
     while True:
         guess_str = input("Enter your guess (row column): ")
         if guess_str.lower() == 'quit':
@@ -52,6 +59,10 @@ def play_game(size, num_ships):
             if not is_valid_guess(guess, size):
                 print("Your guess is off-grid. Try again.")
                 continue
+            if guess in guessed_coordinates:
+                print("You have already guessed that space. Try again.")
+                continue
+            guessed_coordinates.add(guess)
         except ValueError:
             print("Invalid input. Please enter row and column numbers.")
             continue
