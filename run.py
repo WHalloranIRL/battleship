@@ -13,7 +13,13 @@ def create_grid(size):
 # Function to print the grid
 def print_grid(grid):
     for row in grid:
-        print(" ".join(row))
+        row_str = ""
+        for cell in row:
+            if cell == 'H' or cell == 'M':
+                row_str += cell + " "
+            else:
+                row_str += "O "
+        print(row_str)
 
 
 # Function to randomly place ships on the grid
